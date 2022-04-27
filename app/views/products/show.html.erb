@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1 class="display-4">
+  <%= @product.product_name%>
+  <%= %>
+  </h1>
+  <p class="lead">
+    <%= @product.product_price %>
+  </p>
+  <br/>
+  <br/>
+  <hr class="my-4">
+  <p class="lead">
+    <%= link_to 'Edit', edit_product_path(@product), class:"btn btn-secondary" %> |
+    <%= link_to 'Back', products_path, class:"btn btn-secondary" %>
+  </p>
+</div>

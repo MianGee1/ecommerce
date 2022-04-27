@@ -1,0 +1,47 @@
+<div class='container'>
+	<div class='d-flex justify-content-center h-100%'>
+		<div class='card'>
+			<div class='card-header'>
+				<h3>Registration Form</h3>
+			</div>
+			<div class='card-body'>
+        <%=form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render 'devise/shared/error_messages', resource: resource %>
+          <div class='input-group form-group'>
+                <%= f.file_field :avatar %><br />
+	        </div>
+          <div class='input-group form-group'>
+            <%= f.text_field :first_name, autofocus: true, class: 'form-control form-control-lg', placeholder:'First Name'  %>
+	        </div>
+          <div class='input-group form-group'>
+            <%= f.text_field :last_name, autofocus: true, class: 'form-control form-control-lg', placeholder:'Last Name'  %>
+	        </div>
+          <div class='input-group form-group'>
+            <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control form-control-lg', placeholder:'E-Mail'  %>
+	        </div>
+          </br>
+          <div class='input-group form-group'>
+            <div class='form-outline'>
+              <% f.label :password, class: 'form-label'%>
+              <% if @minimum_password_length %>
+                  <p>(<%= @minimum_password_length%> characters minimum)</p>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control form-control-lg' , placeholder:'Password'  %>
+            </div>
+					</div>
+          <div class='form-outline'>
+            <% f.label :password_confirmation, class:'form-label'  %><br />
+            <%= f.password_field :password_confirmation, autocomplete: 'new-password' , class: 'form-control form-control-lg', placeholder:'Confirm Password'   %>
+          </div>
+          <div class='actions'>
+            <div class='mt-4 pt-2'>
+              <%= f.submit 'Sign up', class: 'btn float-right sign_up_btn' %>
+            </div>
+          </div>
+        <%   end %>
+      </div>
+
+		</div>
+	</div>
+</div>
+
