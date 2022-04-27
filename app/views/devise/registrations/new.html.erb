@@ -8,7 +8,7 @@
         <%=form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render 'devise/shared/error_messages', resource: resource %>
           <div class='input-group form-group'>
-                <%= f.file_field :avatar %><br />
+            <%= f.file_field :avatar %><br />
 	        </div>
           <div class='input-group form-group'>
             <%= f.text_field :first_name, autofocus: true, class: 'form-control form-control-lg', placeholder:'First Name'  %>
@@ -24,7 +24,7 @@
             <div class='form-outline'>
               <% f.label :password, class: 'form-label'%>
               <% if @minimum_password_length %>
-                  <p>(<%= @minimum_password_length%> characters minimum)</p>
+                <p>(<%= @minimum_password_length%> characters minimum)</p>
               <% end %><br />
               <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control form-control-lg' , placeholder:'Password'  %>
             </div>
@@ -38,9 +38,8 @@
               <%= f.submit 'Sign up', class: 'btn float-right sign_up_btn' %>
             </div>
           </div>
-        <%   end %>
+        <% end %>
       </div>
-
 		</div>
 	</div>
 </div>
