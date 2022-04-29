@@ -32,5 +32,10 @@
     <%= form.submit %>
   </p>
 <% end %>
+
+<p>
+  <strong>Comments:</strong>
+  <%= render partial: 'reviews/comment', locals: {product: @product} %>
+</p>
   </p>
 </div>
