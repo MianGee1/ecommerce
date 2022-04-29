@@ -5,6 +5,7 @@ ruby '3.0.3'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'htmlbeautifier'
 gem 'image_processing', '~> 1.2'
 gem 'jbuilder', '~> 2.7'
 gem 'parser', '2.4.0.2'

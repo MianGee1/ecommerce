@@ -1,47 +1,55 @@
-<div class='container'>
-	<div class='d-flex justify-content-center h-100%'>
-		<div class='card'>
-			<div class='card-header'>
-				<h3>Registration Form</h3>
-			</div>
-			<div class='card-body'>
-        <%=form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= render 'devise/shared/error_messages', resource: resource %>
-          <div class='input-group form-group'>
-                <%= f.file_field :avatar %><br />
-	        </div>
-          <div class='input-group form-group'>
-            <%= f.text_field :first_name, autofocus: true, class: 'form-control form-control-lg', placeholder:'First Name'  %>
-	        </div>
-          <div class='input-group form-group'>
-            <%= f.text_field :last_name, autofocus: true, class: 'form-control form-control-lg', placeholder:'Last Name'  %>
-	        </div>
-          <div class='input-group form-group'>
-            <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control form-control-lg', placeholder:'E-Mail'  %>
-	        </div>
-          </br>
-          <div class='input-group form-group'>
-            <div class='form-outline'>
-              <% f.label :password, class: 'form-label'%>
-              <% if @minimum_password_length %>
-                  <p>(<%= @minimum_password_length%> characters minimum)</p>
-              <% end %><br />
-              <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control form-control-lg' , placeholder:'Password'  %>
-            </div>
+<div class="container">
+	<div >
+		<article class="card-body mx-auto" style="max-width: 400px;">
+			<h4 class="card-title mt-3 text-center">Registration Form</h4>
+			<form>
+				<%=form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+					<%= render 'devise/shared/error_messages', resource: resource %>
+					<div class="form-group input-group">
+						<%= f.file_field :avatar, class: "form-control" %>
 					</div>
-          <div class='form-outline'>
-            <% f.label :password_confirmation, class:'form-label'  %><br />
-            <%= f.password_field :password_confirmation, autocomplete: 'new-password' , class: 'form-control form-control-lg', placeholder:'Confirm Password'   %>
-          </div>
-          <div class='actions'>
-            <div class='mt-4 pt-2'>
-              <%= f.submit 'Sign up', class: 'btn float-right sign_up_btn' %>
-            </div>
-          </div>
-        <%   end %>
-      </div>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+						</div>
+						<%= f.text_field :first_name, autofocus: true, class: 'form-control', placeholder:'First Name'  %>
+					</div>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+						</div>
+						<%= f.text_field :last_name, autofocus: true, class: 'form-control', placeholder:'Last Name'  %>
+					</div>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+						</div>
+						<%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', placeholder:'Email Address'  %>
+					</div>
 
-		</div>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+						</div>
+						<% f.label :password, class: 'form-label'%>
+						<%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' , placeholder:"Password (#{ @minimum_password_length} characters minimum)"  %>
+					</div>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+						</div>
+						<%= f.password_field :password_confirmation, autocomplete: 'new-password' , class: 'form-control ', placeholder:'Confirm Password'   %>
+					</div>
+					<div class="form-group">
+						<%= f.submit 'Sign up', class: 'btn btn-warning btn-block' %>
+					</div>
+					<p class='sign_in_flex' style='color :black'>Have an account? <%= link_to 'Sign In', new_user_session_path, class:"nav-link"%> </p>
+				<% end %>
+			</form>
+		</article>
 	</div>
+
 </div>
+
+
 

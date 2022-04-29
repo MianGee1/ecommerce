@@ -10,16 +10,28 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
-    <% form.label :product_name %>
-    <%= form.text_field :product_name, class:"form-control", placeholder:"Product Name" %>
+  <div class="form-group">
+  	<div class="form-group input-group">
+  		<%= form.file_field :images, class: "form-control", multiple: true %>
+		</div>
+    <label class="col-md-4 control-label" for="product_name">Product Name</label>
+      <div class="col-md-4">
+        <%= form.text_field :product_name, class:"form-control input-md", placeholder:"Product Name" %>
+      </div>
   </div>
-  <div class="field form-group">
-    <% form.label :product_price %>
-    <%= form.number_field :product_price, class:"form-control", placeholder:"Product Price" %>
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="product_name">Product Price</label>
+    <div class="col-md-4">
+       <%= form.text_field :product_price, class:"form-control input-md", placeholder:"Product Price" %>
+    </div>
   </div>
-
+  <div class="form-group">
+    <div class="col-md-4">
+       <%= form.number_field :user_id, id: :friend_user_id, class:"form-control input-md", value: current_user.id, type: :hidden %>
+    </div>
+  </div>
   <div class="actions">
     <%= form.submit class: "btn btn-dark"%>
   </div>
 <% end %>
+
