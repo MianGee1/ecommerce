@@ -1,6 +1,5 @@
 
     <% @product.reviews.each do |review| %>
-    <% byebug%>
       <p><%= review.content%> </p>
       <small>by <%= review.user.email%></small>
     <% end %>
