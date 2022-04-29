@@ -7,9 +7,15 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-import 'jquery'
+require ("jquery")
+require ("jquery_ujs")
+require ("query_ujs")
+require ("rails-ujs")
+
 import 'popper.js'
 import 'bootstrap'
+import 'bootstrap/js/dist/util';
+import 'bootstrap/js/dist/dropdown';
 import '../stylesheets/application'
 
 

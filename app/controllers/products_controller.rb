@@ -1,6 +1,8 @@
+
 class ProductsController < ApplicationController
   before_action :correct_user, only: %i[edit update destroy]
   before_action :set_product, only: %i[show edit update destroy]
+
   def index
     if user_signed_in?
       @products = Product.all
@@ -42,6 +44,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def correct_user
+    @product = current_user.products.find_by(id: params[:id])
+    redirect_to products_path, notice: 'Not Authorized to edit this friend' if @product.nil?
+  end
+
   def destroy
     @product.destroy
     respond_to do |format|
@@ -52,11 +59,11 @@ class ProductsController < ApplicationController
 
   private
 
-  def product_params
-    params.require(:product).permit(:product_name, :product_price, :user_id, images: [])
-  end
-
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def product_params
+    params.require(:product).permit(:product_name, :product_price, :user_id, images: [])
   end
 end

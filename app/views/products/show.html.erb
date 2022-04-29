@@ -9,16 +9,28 @@
   <% end %>
   <h1 class="display-4">
   <%= @product.product_name %>
-  <%= @product.product_price %>
   </h1>
   <p class="lead">
     <%= @product.product_price%>
   </p>
-  <br/>
-  <br/>
+
   <hr class="my-4">
   <p class="lead">
     <%= link_to 'Edit', edit_product_path(@product), class:"btn btn-secondary" %> |
-    <%= link_to 'Back', products_path, class:"btn btn-secondary" %>
+    <%= link_to 'Back', products_path, class:"btn btn-secondary" %> |
+    <h2>Add a comment:</h2>
+<%= form_with model: [ @product, @product.reviews.build ] do |form| %>
+  <p>
+  <div>
+    <%= form.label :Review %>
+  </div>
+  <div>
+    <%= form.text_area :content%>
+    </div>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
   </p>
 </div>
