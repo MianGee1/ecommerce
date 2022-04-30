@@ -1,16 +1,41 @@
+
 <div class="jumbotron">
+
+    <% (0...@product.images.count).each do |image| %>
+      <%= image_tag(@product.images[image],{:style => 'margin-left: 15px;margin-right: 10px;height :100px;width :180px;'})%>
+    <% end %>
+  <% if @product.images.count == 0%>
+     <%= image_tag('product_default_image/default_product_image.png',  {:style => 'margin-left: 15px;margin-right: 10px;height :100px;width :180px;'})%>
+  <% end %>
   <h1 class="display-4">
-  <%= @product.product_name%>
-  <%= %>
+  <%= @product.product_name %>
   </h1>
   <p class="lead">
-    <%= @product.product_price %>
+    <%= @product.product_price%>
   </p>
-  <br/>
-  <br/>
+
   <hr class="my-4">
   <p class="lead">
     <%= link_to 'Edit', edit_product_path(@product), class:"btn btn-secondary" %> |
-    <%= link_to 'Back', products_path, class:"btn btn-secondary" %>
+    <%= link_to 'Back', products_path, class:"btn btn-secondary" %> |
+    <h2>Add a comment:</h2>
+<%= form_with model: [ @product, @product.reviews.build ] do |form| %>
+  <p>
+  <div>
+    <%= form.label :Review %>
+  </div>
+  <div>
+    <%= form.text_area :content%>
+    </div>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<p>
+  <strong>Comments:</strong>
+  <%= render partial: 'reviews/comment', locals: {product: @product} %>
+</p>
   </p>
 </div>
