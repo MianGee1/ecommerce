@@ -30,15 +30,9 @@
         <% end%>
       </ul>
       <% if user_signed_in? %>
-
-
-
           <%= image_tag(current_user.avatar_thumbnail, :style => "margin-left: 50px;margin-right: 10px;height :70px;width :70px;")%>
           <%= current_user.full_name%>
-
-
       <% end %>
-
     </div>
   </div>
 </nav>
