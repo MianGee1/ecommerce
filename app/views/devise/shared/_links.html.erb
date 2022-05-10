@@ -1,14 +1,27 @@
+<div>
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+<div class= 'sign_in_flex'>
+ <p style='margin-right: 0.5em;'>Sign In Account</p>
+  <p><%= link_to 'Log in', new_session_path(resource_name) %><br /></p>
+  </div>
 <% end %>
-
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-<% end %>
-
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-<% end %>
+</div>
+<div>
+  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <div class= 'sign_in_flex'>
+      <p style='margin-right: 0.5em;'>Don't have an account?</p>
+      <p> <%= link_to 'Sign up', new_registration_path(resource_name) %><br /></p>
+    </div>
+  <% end %>
+</div>
+<div>
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <div class= 'sign_in_flex'>
+      <p style='margin-right: 0.5em;'>Forget Password?</p>
+      <p><%= link_to 'Forgot your password?', new_password_path(resource_name) %><br /></p>
+    </div>
+  <% end %>
+</div>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
