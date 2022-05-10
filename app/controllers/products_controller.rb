@@ -1,4 +1,3 @@
-
 class ProductsController < ApplicationController
   before_action :correct_user, only: %i[edit update destroy]
   before_action :set_product, only: %i[show edit update destroy]
@@ -11,13 +10,16 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @reviews = @product.reviews.order(created_at: :desc)
+  end
 
   def new
     @product = Product.new
   end
 
-  def edit; end
+  def edit
+  end
 
   def create
     @product = current_user.products.build(product_params)
@@ -35,7 +37,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to friend_url(@product), notice: 'product was successfully updated.' }
+        format.html { redirect_to product_url(@product), notice: 'product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -2,7 +2,6 @@
 	<div >
 		<article class="card-body mx-auto" style="max-width: 400px;">
 			<h4 class="card-title mt-3 text-center">Registration Form</h4>
-			<form>
 				<%=form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 					<%= render 'devise/shared/error_messages', resource: resource %>
 					<div class="form-group input-group">
@@ -40,12 +39,11 @@
 						</div>
 						<%= f.password_field :password_confirmation, autocomplete: 'new-password' , class: 'form-control ', placeholder:'Confirm Password'   %>
 					</div>
-					<div class="form-group">
+					<div class="actions">
 						<%= f.submit 'Sign up', class: 'btn btn-warning btn-block' %>
 					</div>
 					<p class='sign_in_flex' style='color :black'>Have an account? <%= link_to 'Sign In', new_user_session_path, class:"nav-link"%> </p>
 				<% end %>
-			</form>
 		</article>
 	</div>
 
