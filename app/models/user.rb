@@ -6,14 +6,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  attr_accessor :first_name, :last_name
+  attr_accessor :first_name, :last_name, :name
 
-  has_one_attached :avatar
+  has_one_attached :avatar, dependent: :destroy
 
-  has_many :products
-  has_many :reviews
+  has_many :products, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   after_validation :add_name
+
 
   def add_name
     self.full_name = [first_name, last_name].join(' ')

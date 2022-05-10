@@ -1,8 +1,8 @@
-<% @product.reviews.each do |review| %>
+<% @product.reviews.reload.each do |review| %>
   <div style=' display: flex; '>
     <p style='margin-right:15rem'><%= review.content%></p>
-    <%# <small><%= review.user.email%></small>
-    <%# <span> <%= time_ago_in_words(review.created_at)%> </span>
+    <small><%= review.user.email%></small>
+    <span> <%= time_ago_in_words(review.created_at)%> </span>
     <%if current_user == review.user%>
       <div style=' display: flex; align-items: center; justify-content: center;'>
         <div class = 'form-group'>
