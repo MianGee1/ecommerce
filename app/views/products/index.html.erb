@@ -3,8 +3,8 @@
     <% @products.each do |product| %>
       <div class='card' style='width: 18rem; height :15rem; margin :0.5rem;'>
         <% if product.images.attached?%>
-          <% (0...product.images.count).each do |image| %>
-            <%= image_tag(product.images[0], {:style => 'margin-left: 15px;margin-right: 10px;height :100px;width :180px;'})%>
+          <% product.images.each do |image| %>
+            <%= image_tag(image, {:style => 'margin-left: 15px;margin-right: 10px;height :100px;width :180px;'})%>
             <% break %>
           <% end %>
         <% else %>
@@ -18,7 +18,7 @@
             <% if product.user == current_user%>
               <%= link_to 'Edit', edit_product_path(product), class:'btn btn-secondary btn-sm' %> |
               <%= button_to 'Delete', product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm' %>
-            <% else %>
+            <%   else %>
               <a href='#' class='btn btn-primary btn-sm'>Add to Cart</a>
             <%end%>
           </div>

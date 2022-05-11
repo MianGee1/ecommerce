@@ -1,8 +1,8 @@
 <div class='jumbotron'>
-  <% (0...@product.images.count).each do |image| %>
-    <%= image_tag(@product.images[image],{:style => 'margin-left: 15px;margin-right: 10px;height :100px;width :180px;'})%>
+  <% @product.images.each do |image| %>
+    <%= image_tag(image,{:style => 'margin-left: 15px;margin-right: 10px;height :100px;width :180px;'})%>
   <% end %>
-  <% if @product.images.count == 0%>
+  <% unless @product.images.count > 0%>
     <%= image_tag('product_default_image/default_product_image.png',  {:style => 'margin-left: 15px;margin-right: 10px;height :100px;width :180px;'})%>
   <% end %>
   <h1 class='display-4'>

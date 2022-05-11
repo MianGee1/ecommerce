@@ -11,14 +11,22 @@ require ("jquery")
 require ("jquery_ujs")
 require ("query_ujs")
 require ("rails-ujs")
+require("@fortawesome/fontawesome-free/js/all")
+require("packs/custom")
+require("packs/posts.js")
 
 import 'popper.js'
 import 'bootstrap'
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/dropdown';
-import '../stylesheets/application'
+import "../stylesheets/application"
 
+var jQuery = require('jquery')
 
+// include jQuery in global and window scope (so you can access it globally)
+// in your web browser, when you type $('.div'), it is actually refering to global.$('.div')
+global.$ = global.jQuery = jQuery;
+window.$ = window.jQuery = jQuery;
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

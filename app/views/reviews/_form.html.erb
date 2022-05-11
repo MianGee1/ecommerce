@@ -1,5 +1,5 @@
 <%= form_with(model:[@product, @product.reviews.build])  do |form| %>
-  <div class='form-group'>
+  <div class='mb-3'>
     <label class='col-md-4 control-label' for='product_name'>Comment</label>
     <div class='col-md-4'>
       <%= form.text_field :content, class:'form-control input-md', placeholder:'Comment' %>
