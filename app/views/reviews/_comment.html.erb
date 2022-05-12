@@ -1,5 +1,18 @@
-
-    <% @product.reviews.each do |review| %>
-      <p><%= review.content%> </p>
-      <small>by <%= review.user.email%></small>
-    <% end %>
+<% @product.reviews.reload.each do |review| %>
+  <div style=' display: flex; '>
+    <p style='margin-right:15rem'><%= review.content%></p>
+    <small><%= review.user.full_name%>  </small>
+    <small>   .. <%= time_ago_in_words(review.created_at)%> </small>
+    <%if current_user == review.user%>
+      <div style=' display: flex; align-items: center; justify-content: center;'>
+        <div class = 'form-group'>
+          <%= button_to 'Delete', product_review_path(product, review),class:'btn btn-danger', method: :delete%>
+        </div>
+        <div class = 'form-group'>
+          <%= link_to 'Edit', edit_product_review_path(product, review)  , class:'btn btn-warning' %>
+        </div>
+      </div>
+    <%end%>
+  </div>
+  <p></p>
+<% end %>

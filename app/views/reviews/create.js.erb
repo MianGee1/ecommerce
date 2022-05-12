@@ -1,0 +1,7 @@
+<%# ${'#comment_pane'}.prepend('<%= j render @comment%>') %>
+
+<% if @review.errors.any?%>
+  alert('Invalid')
+<%else%>
+  $("#comments").html("<%= escape_javascrip render('comment', review: @review) %>")
+<%end%>
