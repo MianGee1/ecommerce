@@ -24,11 +24,6 @@
       <%= form.text_field :product_price, class:'form-control input-md', placeholder:'Product Price' %>
     </div>
   </div>
-  <div class='mb-3'>
-    <div class='col-md-4'>
-      <%= form.number_field :user_id, id: :product_user_id, class:'form-control input-md', value: current_user.id, type: :hidden %>
-    </div>
-  </div>
   <div class='actions'>
     <%= form.submit class: 'btn btn-dark'%>
   </div>

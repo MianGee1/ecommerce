@@ -2,7 +2,7 @@
   <% @product.images.each do |image| %>
     <%= image_tag(image,{:style => 'margin-left: 15px;margin-right: 10px;height :100px;width :180px;'})%>
   <% end %>
-  <% unless @product.images.count > 0%>
+  <% unless @product.images%>
     <%= image_tag('product_default_image/default_product_image.png',  {:style => 'margin-left: 15px;margin-right: 10px;height :100px;width :180px;'})%>
   <% end %>
   <h1 class='display-4'>

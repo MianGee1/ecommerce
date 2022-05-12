@@ -3,10 +3,7 @@
     <% @products.each do |product| %>
       <div class='card' style='width: 18rem; height :15rem; margin :0.5rem;'>
         <% if product.images.attached?%>
-          <% product.images.each do |image| %>
-            <%= image_tag(image, {:style => 'margin-left: 15px;margin-right: 10px;height :100px;width :180px;'})%>
-            <% break %>
-          <% end %>
+            <%= image_tag(product.images.first, {:style => 'margin-left: 15px;margin-right: 10px;height :100px;width :180px;'})%>
         <% else %>
           <%= image_tag('product_default_image/default_product_image.png',  {:style => 'margin-left: 15px;margin-right: 10px;height :100px;width :180px;'})%>
         <% end %>
