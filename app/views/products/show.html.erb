@@ -21,7 +21,7 @@
       <h2>Add a comment:</h2>
       <%= render partial: 'reviews/form', local: {product: @product}%>
     <% end%>
-    <div >
+    <div id = 'comments'>
       <h4><strong>Comments:</strong></h4>
       <%= render partial: 'reviews/comment', locals: {product: @product} %>
     </div>
