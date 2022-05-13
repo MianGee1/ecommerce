@@ -6,8 +6,11 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  resource :cart
+  resource :order
+  resources :line_items
+
   resources :products do
     resources :reviews
   end
-
 end
