@@ -1,0 +1,32 @@
+<h1>My Order</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Product Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <% total = 0%>
+<% @order.line_items.reload.each do |line_item| %>
+  <tbody>
+    <tr>
+      <td><%= line_item.product.product_name%></td>
+      <td><%= line_item.product.product_price%></td>
+      <td><%= line_item.quantity%></td>
+      <td><%= line_item.quantity*line_item.product.product_price%></td>
+      <% total = total + line_item.quantity*line_item.product.product_price%>
+    </tr>
+  </tbody>
+
+  <% end %>
+      <tfoot>
+    <th scope="row", colspan="3">Grand Total</th>
+    <td><%= total%></td>
+  </tfoot>
+</table>
+
+
+
+
