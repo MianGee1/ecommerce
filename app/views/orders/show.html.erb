@@ -1,4 +1,14 @@
 <h1>My Order</h1>
+<%= form_with  model: @order, url: { action: 'find_coupon' }, locale: true, method: :patch do |form| %>
+  <div style = 'display: flex'>
+    <div class='col-md-4'>
+      <%= form.text_field :code,  size: '3', placeholder: 'Coupon', class:'form-control input-md' %>
+    </div>
+    <div class='actions'>
+      <%= form.submit 'Apply', class: 'btn btn-warning' %>
+    </div>
+  </div>
+<% end %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -9,44 +19,36 @@
     </tr>
   </thead>
   <% total = 0%>
-<% @order.line_items.reload.each do |line_item| %>
-  <tbody>
-    <tr>
-      <td><%= line_item.product.product_name%></td>
-      <td><%= line_item.product.product_price%></td>
-      <td><%= line_item.quantity%></td>
-      <td><%= line_item.quantity*line_item.product.product_price%></td>
-      <% total = total + line_item.quantity*line_item.product.product_price%>
-    </tr>
-  </tbody>
-
+  <% @order.line_items.reload.each do |line_item| %>
+    <tbody>
+      <tr>
+        <td><%= line_item.product.product_name%></td>
+        <td><%= line_item.product.product_price%></td>
+        <td><%= line_item.quantity%></td>
+        <td><%= line_item.quantity*line_item.product.product_price%></td>
+        <% total = total + line_item.quantity*line_item.product.product_price%>
+      </tr>
+    </tbody>
   <% end %>
-        <th scope="col", colspan="3">Sub Total</th>
-      <td><%= total%></td>
-
-  <tfoot>
-  <div>
-                  <th scope="row", colspan="3">Coupon</th>
-            <td><%= form_with model: @order, method: :patch do |form| %>
-            <div style = 'display: flex'>
-              <div class='col-md-4'>
-                <%= form.text_field :coupon, maxlength: '3',  size: '3', placeholder: 'Coupon', class:'form-control input-md' %>
-              </div>
-              <% byebug %>
-              <div class='actions'>
-                <%= form.submit 'Apply', class: 'btn btn-warning' %>
-              </div>
-            </div>
-          <% end %></td>
-    </div>
-    <div>
-
-    </div>
-  </div>
-
-
-  </tfoot>
+  <th scope="col", colspan="3">Sub Total</th>
+  <td><%= total%></td>
+  <% if @order.coupon_id != nil%>
+    <thead>
+      <tr>
+        <th scope="row"> Discount</th>
+      </tr>
+    </thead>
+    <tbody>
+        <td><%= @order.coupon.discount%></td>
+    </tbody>
+    <th scope="col", colspan="3">Grand Total</th>
+    <td><%= total = total - (total*@order.coupon.discount) %></td>
+  <% else %>
+    <th scope="col", colspan="3">Grand Total</th>
+    <td><%= total = total  %></td>
+  <%end%>
 </table>
+
 
 
 

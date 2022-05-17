@@ -7,7 +7,6 @@
     </tr>
   </thead>
   <% @cart.line_items.reload.each do |line_item| %>
-
     <tbody>
       <tr>
         <td><%= line_item.product.product_name%></td>

@@ -1,9 +1,23 @@
 class OrdersController < ApplicationController
   before_action :current_cart
 
-
   def index
     @orders = Order.all
+  end
+
+  def find_coupon
+    @order = Order.find(params[:id])
+    coupon = Coupon.find_by(coupon: order_params[:code])
+    respond_to do |format|
+      if coupon
+        @order.coupon_id = coupon.id
+        @order.code = coupon.coupon
+        @order.save
+        format.html { redirect_to order_path(@order), notice: 'coupon yes' }
+      else
+        format.html { redirect_to order_path(@order), notice: 'coupon no' }
+      end
+    end
   end
 
   def show
@@ -33,6 +47,10 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def order_params
+    params.require(:order).permit(:code)
+  end
 
   def current_cart
     @cart = Cart.find(session[:cart_id])

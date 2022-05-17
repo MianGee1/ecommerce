@@ -16,7 +16,6 @@ class User < ApplicationRecord
 
   after_validation :add_name
 
-
   def add_name
     self.full_name = [first_name, last_name].join(' ')
   end
