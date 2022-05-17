@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    byebug
     @order = Order.find(params[:id])
   end
 
@@ -18,13 +17,11 @@ class OrdersController < ApplicationController
   def edit; end
 
   def create
-    byebug
     current_cart
     @order = Order.create(user_id: current_user.id)
     current_cart.line_items.update_all(order_id: @order.id)
     respond_to do |format|
       if @order.save
-        byebug
         current_cart.delete
         format.html { redirect_to order_path(@order), notice: 'Order was successfully created.' }
         # format.json { render :show, status: :created, location: @order }
