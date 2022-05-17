@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   end
 
   resource :cart
-  resources :orders
+  resources :orders do
+    member do
+      patch 'find_coupon'
+    end
+  end
   resources :line_items
 
   resources :products do
