@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Coupon.destroy_all
+
+Coupon.create!([
+{
+  coupon: 'DevnTech',
+  discount: 0.3
+},
+{
+  coupon: 'Pak14',
+  discount: 0.5
+}])

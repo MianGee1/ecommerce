@@ -11,6 +11,12 @@
             <%= link_to 'Add Product', new_product_path, class:'nav-link'%>
           </li>
           <li class='nav-item'>
+            <%= link_to 'Orders', orders_path, class:'nav-link'%>
+          </li>
+          <li class='nav-item'>
+            <%= link_to 'Cart', cart_path, class:'nav-link'%>
+          </li>
+          <li class='nav-item'>
             <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:'nav-link'%>
           </li>
           <li class='nav-item'>
