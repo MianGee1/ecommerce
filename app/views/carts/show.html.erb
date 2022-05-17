@@ -31,8 +31,7 @@
     </tbody>
     <% end %>
 </table>
-
-
-
-<%= button_to 'Place Order', order_path , method: :post,  class:'btn btn-warning' %>
+<% if @cart.line_items != nil%>
+  <%= button_to 'Place Order', orders_path , method: :post,  class:'btn btn-warning' %>
+<% end %>
 

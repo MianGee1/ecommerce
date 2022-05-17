@@ -3,11 +3,12 @@ class OrdersController < ApplicationController
 
 
   def index
-    # @order = Order.find(session[:order_id])
+    @orders = Order.all
   end
 
   def show
-    @order = Order.find_by(params[:id])
+    byebug
+    @order = Order.find(params[:id])
   end
 
   def new
@@ -17,15 +18,14 @@ class OrdersController < ApplicationController
   def edit; end
 
   def create
+    byebug
     current_cart
-    @order = Order.find_by(params[:id])
-    unless @order
-      @order = Order.create(user_id: current_user.id)
-      session[:order_id] = @order.id
-    end
+    @order = Order.create(user_id: current_user.id)
     current_cart.line_items.update_all(order_id: @order.id)
     respond_to do |format|
       if @order.save
+        byebug
+        current_cart.delete
         format.html { redirect_to order_path(@order), notice: 'Order was successfully created.' }
         # format.json { render :show, status: :created, location: @order }
       else

@@ -1,1 +1,27 @@
-hgjhg
+
+<h1>My Orders</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Order Id</th>
+      <th scope="col">Order Place At</th>
+      <th scope="col">Show</th>
+    </tr>
+  </thead>
+<% @orders.each do |order| %>
+  <% unless order.user != current_user%>
+    <tbody>
+      <tr>
+        <td><%= order.id%></td>
+        <td><%= order.created_at%></td>
+        <td><%= link_to 'Show Order', order_path(order), class:'btn btn-warning' %></td>
+      </tr>
+    </tbody>
+  <%end%>
+<% end %>
+
+</table>
+
+
+
+

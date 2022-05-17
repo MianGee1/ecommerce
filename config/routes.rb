@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resource :cart
-  resource :order
+  resources :orders
   resources :line_items
 
   resources :products do
